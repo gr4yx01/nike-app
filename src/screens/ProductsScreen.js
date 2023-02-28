@@ -3,27 +3,25 @@ import products from "./../data/products";
 
 const ProductsScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
       <FlatList
         data={products}
         renderItem={({ item }) => (
-          <PressablePlease make sure you have the correct access rights
+          <Pressable
             onPress={() => {
-              navigation.navigate("Product Detail");
+              navigation.navigate("Product Details");
             }}
-            style={styles.container}
+            style={styles.itemContainer}
           >
-              <Image source={{ uri: item.image }} style={styles.image} />
+            <Image source={{ uri: item.image }} style={styles.image} />
           </Pressable>
         )}
         numColumns={2}
       />
-    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  itemContainer: {
     width: "50%",
     padding: 1,
   },
