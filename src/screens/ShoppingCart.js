@@ -1,8 +1,11 @@
 import { View, Text, StyleSheet, FlatList, Pressable } from "react-native";
 import CartListItem from "../components/CartListItem";
-import cart from "./../data/cart";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const ShoppingCart = () => {
+  const cart = useSelector((state) => state.cart?.items);
+
   return (
     <>
       <View style={styles.container}>

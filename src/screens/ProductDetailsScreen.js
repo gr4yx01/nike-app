@@ -7,15 +7,20 @@ import {
   ScrollView,
   Pressable,
 } from "react-native";
-import products from "../data/products";
 import { Ionicons } from "@expo/vector-icons";
+import { cartSlice } from "../store/cartSlice";
+
+import { useSelector, useDispatch } from "react-redux";
 
 const ProductDetailsScreen = () => {
-  const product = products[0];
+  const product = useSelector((state) => state.products.selectedProduct);
+  const dispatch = useDispatch();
 
   const { width } = useWindowDimensions();
 
-  const addToCart = () => {};
+  const addToCart = () => {
+    dispatch(cartSlice.actions.addCartItem({ product }));
+  };
 
   return (
     <>
@@ -73,8 +78,10 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     position: "absolute",
     bottom: 30,
-    width: "90%",
+    width: "80%",
     padding: 20,
+    justifyContent: "center",
+    alignSelf: "center",
   },
   buttonText: {
     color: "white",
